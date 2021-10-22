@@ -1,0 +1,29 @@
+{
+  "name": "awesome-chatbot",
+  "version": "1.0.0",
+  "description": "Hey there! Looking to make a chatbot? Here is your right place!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hisRoyalty/awesome-chatbot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hisRoyalty/awesome-chatbot/issues"
+  },
+  "homepage": "https://github.com/hisRoyalty/awesome-chatbot#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "clever-chat": "^8.0.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "quick.db": "^7.1.3"
+  }
+}
