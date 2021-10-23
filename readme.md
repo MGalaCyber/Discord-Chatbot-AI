@@ -7,6 +7,16 @@
 <p><a href="https://heroku.com/deploy?template=https://github.com/MGalaCyber/Chatbot-AI-v1"> <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
 
 ***
+### FOR REPL.IT USER
+
+[![Run on Repl.it](https://repl.it/badge/github/vcodes-xyz/bot-list)](https://repl.it/github/MGalaCyber/Chatbot-AI-v1)<br>
+<!-- [![Watching](https://img.shields.io/github/watchers/MGalaCyber/Chatbot-AI-v1?style=for-the-badge)](/)
+[![Stars](https://img.shields.io/github/stars/MGalaCyber/Chatbot-AI-v1?style=for-the-badge)](https://github.com/MGalaCyber/Chatbot-AI-v1/stargazers)
+[![Forks](https://img.shields.io/github/forks/MGalaCyber/Chatbot-AI-v1?style=for-the-badge)](https://github.com/MGalaCyber/Chatbot-AI-v1/network/members)
+[![ISSUES](https://img.shields.io/github/issues-raw/MGalaCyber/Chatbot-AI-v1?color=blue&logo=github&style=for-the-badge)](https://github.com/MGalaCyber/Chatbot-AI-v1/issues) -->
+
+
+***
 
 Hey there! Looking to make a chatbot? Here is your right place!
 
