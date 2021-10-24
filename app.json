@@ -15,7 +15,7 @@
     },
     "PREFIX": {
       "description": "Add you prefix",
-      "required": true
+      "required": false
     }
 },
   "buildpacks": [
