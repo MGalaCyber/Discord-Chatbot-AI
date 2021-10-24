@@ -103,6 +103,6 @@ client.on("message", async message => {
   }
 });
 // Login
-client.login(process.env.TOKEN);
+client.login(process.env.token);
 
 // put your token here ^^
