@@ -37,7 +37,7 @@ client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
 setInterval(async () => {
 const statuses = [`Galaxy Universe`, `Awesome Chatbot`, `| Made by GalaXd#9165`]
-   client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.com/invite/"})
+   client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.com/invite/VzGNhtmmfB"})
 }, 10000)
 });
 
@@ -67,7 +67,7 @@ client.on("message", async message => {
   let messageArray = message.content.split(" "),
     cmd = messageArray[0].toLowerCase(),
     args = messageArray.slice(1),
-    prefix = ","; // Add Prefix
+    prefix = "s"; // Add Prefix
 
   if (!message.content.startsWith(prefix)) return;
   let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
