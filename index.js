@@ -31,7 +31,7 @@ client.aliases = new Discord.Collection();
 
 
 client.db = require('quick.db');
-owner = "682211671728455702"
+owner = process.env.OWNER // "682211671728455702"
 
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
@@ -67,7 +67,7 @@ client.on("message", async message => {
   let messageArray = message.content.split(" "),
     cmd = messageArray[0].toLowerCase(),
     args = messageArray.slice(1),
-    prefix = "."; // Add Prefix
+    prefix = process.env.PREFIX // Add Prefix
 
   if (!message.content.startsWith(prefix)) return;
   let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
