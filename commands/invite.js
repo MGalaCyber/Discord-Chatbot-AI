@@ -1,5 +1,6 @@
 module.exports.run = async(client, message, args) => {
     let db = client.db
+    const Discord = require('discord.js');
     
     const inviteEmbed = new Discord.MessageEmbed()
     .setTitle('Thanks for Invite me :)')
