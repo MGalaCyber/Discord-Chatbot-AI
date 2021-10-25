@@ -67,7 +67,7 @@ client.on("message", async message => {
   let messageArray = message.content.split(" "),
     cmd = messageArray[0].toLowerCase(),
     args = messageArray.slice(1),
-    prefix = "s"; // Add Prefix
+    prefix = "."; // Add Prefix
 
   if (!message.content.startsWith(prefix)) return;
   let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
