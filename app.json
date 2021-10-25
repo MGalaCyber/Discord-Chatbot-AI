@@ -12,10 +12,6 @@
     "TOKEN": {
       "description": "Get the token key here https://discord.com/developers/applications/",
       "required": true
-    },
-    "PREFIX": {
-      "description": "Add you prefix",
-      "required": false
     }
 },
   "buildpacks": [
