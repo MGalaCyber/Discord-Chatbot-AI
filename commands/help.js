@@ -5,9 +5,9 @@ module.exports.run = async(client, message, args) => {
     const helpEmbed = new Discord.MessageEmbed()
     .setTitle('Help Menu')
     .setColor('RANDOM')
-    .addField('Setchat', `${PREFIX}setchat`)
-    .addField('Invite', `${PREFIX}invite`)
-    .addField('Source Code', `🔗: [Click Here](https://github.com/MGalaCyber/Chatbot-AI-v1)`)
+    .addField('Setchat', `${prefix}setchat`)
+    .addField('Invite', `${prefix}invite`)
+    .addField('Source Code', '🔗: [Click Here](https://github.com/MGalaCyber/Chatbot-AI-v1)')
     .setFooter(`Requested by: ${message.author.tag}`, message.author.avatarURL())
 
     message.channel.send(helpEmbed);
