@@ -3,7 +3,7 @@ module.exports.run = async(client, message, args) => {
     const Discord = require('discord.js');
     
     const helpEmbed = new Discord.MessageEmbed()
-    .setTitle('Help Menu')
+    .setTitle('Help Menu ❓')
     .setColor('RANDOM')
     .addField('Setchat', `${process.env.PREFIX}setchat`)
     .addField('Invite', `${process.env.PREFIX}invite`)
