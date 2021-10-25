@@ -10,7 +10,7 @@
   "website": "https://galacyber.xyz",
   "env": {
     "TOKEN": {
-      "description": "Get the token key here https://discord.com/developers/applications/",
+      "description": "Get the you bot token here https://discord.com/developers/applications/",
       "required": true
     },
     "OWNER": {
