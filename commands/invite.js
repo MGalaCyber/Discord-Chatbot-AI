@@ -6,7 +6,7 @@ module.exports.run = async(client, message, args) => {
     // if (!channel) return message.channel.send(client.em('', 'This is not a channel'))
     
     // db.set(`${message.guild.id}_chatchannel`, `${channel.id}`)
-    message.channel.send(client.em('Thanks for Invite me :)', `🔗[Invite](https://discord.com/api/oauth2/authorize?client_id=869755197046530060&permissions=515466853952&scope=bot)`))
+    message.channel.send(client.em('Thanks for Invite me :)', `🔗: [Invite bot](https://discord.com/api/oauth2/authorize?client_id=869755197046530060&permissions=515466853952&scope=bot) Click here for invite!`, `🔗: [Join Discord Server](https://discord.gg/invite/VzGNhtmmfB) Click here for Join to My Discord Server!`))
     }
     module.exports.config = {
       name: 'invite',
