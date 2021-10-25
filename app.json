@@ -1,0 +1,32 @@
+{
+  "name": "Simple Chatbot AI Discord",
+  "description": "[Chatbot] Thank you for using this script, don't forget to subscribe to my channel Galaxy1274",
+  "logo": "https://media0.giphy.com/media/oe33xf3B50fsc/200.gif",
+  "keywords": ["Chatbot-AI",
+    "discord-bot",
+    "discord",
+    "js-chatbot"],
+  "repository": "https://github.com/MGalaCyber/Chatbot-AI-v1",
+  "website": "https://galacyber.xyz",
+  "env": {
+    "TOKEN": {
+      "description": "Get the token key here https://discord.com/developers/applications/",
+      "required": true
+    },
+    "PREFIX": {
+      "description": "Add you prefix",
+      "required": false
+    }
+},
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+   "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}

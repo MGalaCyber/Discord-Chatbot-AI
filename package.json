@@ -1,5 +1,5 @@
 {
-  "name": "awesome-chatbot",
+  "name": "chatbot-ai-v1",
   "version": "1.0.0",
   "description": "Hey there! Looking to make a chatbot? Here is your right place!",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hisRoyalty/awesome-chatbot.git"
+    "url": "git+https://github.com/MGalaCyber/chatbot-ai-v1.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "MGalaCyber",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hisRoyalty/awesome-chatbot/issues"
+    "url": "https://github.com/MGalaCyber/chatbot-ai-v1/issues"
   },
-  "homepage": "https://github.com/hisRoyalty/awesome-chatbot#readme",
+  "homepage": "https://github.com/MGalaCyber/chatbot-ai-v1#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "clever-chat": "^8.0.1",
