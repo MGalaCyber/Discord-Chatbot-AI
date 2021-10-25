@@ -31,7 +31,7 @@ client.aliases = new Discord.Collection();
 
 
 client.db = require('quick.db');
-owner = process.env.OWNER // "682211671728455702"
+owner = process.env.OWNER // Add you Discord ID
 
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)

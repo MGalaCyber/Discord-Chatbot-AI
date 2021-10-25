@@ -12,6 +12,14 @@
     "TOKEN": {
       "description": "Get the token key here https://discord.com/developers/applications/",
       "required": true
+    },
+    "OWNER": {
+      "description": "Add you Discord ID",
+      "required": true
+    },
+    "PREFIX": {
+      "description": "Add you Prefix for Chatbot",
+      "required": true
     }
 },
   "buildpacks": [
