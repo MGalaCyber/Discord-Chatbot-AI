@@ -36,7 +36,12 @@ owner = process.env.OWNER // Add you Discord ID
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
 setInterval(async () => {
-const statuses = [`${client.guilds.cache.size}`, `Galaxy Universe`, `Awesome Chatbot`, `| Made by GalaXd#9165`]
+const statuses = [`${process.env.PREFIX}help`,
+                  `${client.guilds.cache.size} Servers`,
+                  `Galaxy Universe`,
+                  `Awesome Chatbot`,
+                  `| Made by GalaXd#9165`
+                 ];
    client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.com/invite/VzGNhtmmfB"})
 }, 10000)
 });
