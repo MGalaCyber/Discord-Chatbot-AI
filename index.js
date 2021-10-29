@@ -36,8 +36,9 @@ owner = process.env.OWNER // Add you Discord ID
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
 setInterval(async () => {
-const statuses = [`${process.env.PREFIX}help`,
+const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.guilds.cache.size} Servers`,
+                  `${client.users.cache.size} Users`,
                   `Galaxy Universe`,
                   `Awesome Chatbot`,
                   `| Made by GalaXd#9165`
