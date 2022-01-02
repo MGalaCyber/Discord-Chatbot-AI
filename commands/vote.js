@@ -6,8 +6,8 @@ module.exports.run = async(client, message, args) => {
     .setTitle('Thanks for Voted me :)')
     .setColor('RANDOM')
     .addField('Top.gg', `🔗: [Click here!](https://top.gg/bot/869755197046530060/vote)`)
-	.addField('Discordbotlist.com', `🔗: [Click here!](https://discordbotlist.com/bots/siesta-chan/upvote)`)
-	.addField('Discord.boats', `🔗: [Click here!](https://discord.boats/bot/869755197046530060/vote)`)
+    .addField('Discordbotlist.com', `🔗: [Click here!](https://discordbotlist.com/bots/siesta-chan/upvote)`)
+    .addField('Discord.boats', `🔗: [Click here!](https://discord.boats/bot/869755197046530060/vote)`)
     .setFooter(`Requested by: ${message.author.tag}`, message.author.avatarURL())
 
     message.channel.send(voteEmbed);
