@@ -7,7 +7,7 @@ module.exports.run = async(client, message, args) => {
     .setColor('RANDOM')
     .addField('Setchat', `${process.env.PREFIX}setchat`)
     .addField('Invite', `${process.env.PREFIX}invite`)
-	.addField('Vote', `${process.env.PREFIX}vote`)
+    .addField('Vote', `${process.env.PREFIX}vote`)
     .addField('Source Code', `🔗: [Click Here](https://github.com/MGalaCyber/Chatbot-AI-v1)`)
     .setFooter(`Requested by: ${message.author.tag}`, message.author.avatarURL())
 
