@@ -1,7 +1,7 @@
 module.exports.run = async(client, message, args) => {
     let db = client.db
     const Discord = require('discord.js');
-	// let m = await message.reply("Sending request to websocket...")
+	let m = await message.reply("Sending request to websocket...")
     
     const pingEmbed = new Discord.MessageEmbed()
     .setTitle("Client's Ping")
