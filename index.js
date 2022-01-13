@@ -42,7 +42,7 @@ const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.users.cache.size} Users`,
                   `Galaxy Universe`,
                   `Awesome Chatbot`,
-                  `| Made by ${author} Team's`
+                  `| Made by MGalaCyber Team's`
                  ];
    client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.gg/2UshYsFfCP"})
 }, 10000)
