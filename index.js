@@ -21,7 +21,7 @@ app.listen(port, () => {
 // Code
 const fs = require('fs');
 const Discord = require('discord.js');
-const author = require('./package.json')
+const { author } = require('./package.json');
 const client = new Discord.Client({
     disableEveryone: true
 });
@@ -42,7 +42,7 @@ const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.users.cache.size} Users`,
                   `Galaxy Universe`,
                   `Awesome Chatbot`,
-                  `| Made by MGalaCyber Team's`
+                  `| Made by ${author} Teams`
                  ];
    client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.gg/2UshYsFfCP"})
 }, 10000)
@@ -114,12 +114,12 @@ client.login(process.env.TOKEN)
 
 /**
 ////////////////////////////////////////////////////////////////////
-///																 ///
-/// 			     Bot Coded by GalaXd#9165					 ///
-///																 ///
-///   Work for MGalaCyber Development | https://mgalacyber.xyz   ///
-///																 ///
-/// 			    	All Right Reserved!						 ///
-///																 ///
+////                                                            ////
+\\\\                  Bot Coded by GalaXd#9165                  \\\\
+////                                                            ////
+\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
+////                                                            ////
+\\\\                    All Right Reserved!                     \\\\
+////                                                            ////
 ////////////////////////////////////////////////////////////////////
  */

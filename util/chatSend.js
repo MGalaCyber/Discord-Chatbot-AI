@@ -20,12 +20,12 @@ module.exports = {
 
 /**
 ////////////////////////////////////////////////////////////////////
-///																 ///
-/// 			     Bot Coded by GalaXd#9165					 ///
-///																 ///
-///   Work for MGalaCyber Development | https://mgalacyber.xyz   ///
-///																 ///
-/// 			    	All Right Reserved!						 ///
-///																 ///
+////                                                            ////
+\\\\                  Bot Coded by GalaXd#9165                  \\\\
+////                                                            ////
+\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
+////                                                            ////
+\\\\                    All Right Reserved!                     \\\\
+////                                                            ////
 ////////////////////////////////////////////////////////////////////
  */
