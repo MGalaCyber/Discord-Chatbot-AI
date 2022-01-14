@@ -9,7 +9,7 @@ module.exports.run = async(client, message, args) => {
     .addField("⌛ Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
     .addField("🤖 API Latency", `${Math.round(client.ws.ping)}ms`, true)
     .setFooter(`Requested by: ${message.author.tag}`, message.author.avatarURL())
-	.setTimestamp()
+    .setTimestamp()
 
     message.channel.send(pingEmbed);
     }
