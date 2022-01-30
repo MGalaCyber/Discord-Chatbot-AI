@@ -8,7 +8,7 @@ module.exports.run = async(client, message, args) => {
     const pingEmbed = new Discord.MessageEmbed()
     .setTitle("Client's Ping")
     .setColor('RANDOM')
-    .addField("⌛ Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
+    .addField("⌛ Websocket Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
     .addField("🤖 API Latency", `${Math.round(client.ws.ping)}ms`, true)
     .setFooter(`Requested by: ${message.author.tag} | © ${author} - Siesta v${version}`, message.author.avatarURL())
 
@@ -21,13 +21,13 @@ module.exports.run = async(client, message, args) => {
     }
 
 /**
-////////////////////////////////////////////////////////////////////
-////                                                            ////
-\\\\                  Bot Coded by GalaXd#9165                  \\\\
-////                                                            ////
-\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
-////                                                            ////
-\\\\                    All Right Reserved!                     \\\\
-////                                                            ////
-////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\                  Bot Coded by GalaXd#9165                   \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
  */

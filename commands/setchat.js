@@ -7,6 +7,8 @@ if (!channel) return message.channel.send(client.em('', 'This is not a channel')
 
 db.set(`${message.guild.id}_chatchannel`, `${channel.id}`)
 message.channel.send(client.em('Chat Channel', `Chat Channel of this server is set to ${channel}`))
+message.channel.send(client.em('NOTICE!', `If the bot doesn't respond/reply to your chat messages, please reset the chat channel, with the command \`${process.env.PREFIX}setchat\` (#channel)`))
+
 }
 module.exports.config = {
   name: 'setchat',
@@ -14,13 +16,13 @@ module.exports.config = {
 }
 
 /**
-////////////////////////////////////////////////////////////////////
-////                                                            ////
-\\\\                  Bot Coded by GalaXd#9165                  \\\\
-////                                                            ////
-\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
-////                                                            ////
-\\\\                    All Right Reserved!                     \\\\
-////                                                            ////
-////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\                  Bot Coded by GalaXd#9165                   \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
  */

@@ -1,6 +1,6 @@
 {
   "name": "chatbot-ai-v1",
-  "version": "2.5.0",
+  "version": "2.5.3",
   "description": "Hey there! Looking to make a chatbot? Here is your right place!",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MGalaCyber/chatbot-ai-v1.git"
+    "url": "git+https://github.com/MGalaCyber/discord-chatbot-ai.git"
   },
   "keywords": [],
   "author": "MGalaCyber",
-  "license": "ISC",
+  "license": "GPL",
   "bugs": {
-    "url": "https://github.com/MGalaCyber/chatbot-ai-v1/issues"
+    "url": "https://github.com/MGalaCyber/discord-chatbot-ai/issues"
   },
-  "homepage": "https://github.com/MGalaCyber/chatbot-ai-v1#readme",
+  "homepage": "https://github.com/MGalaCyber/discord-chatbot-ai#readme",
   "dependencies": {
     "chalk": "^4.1.2",
     "clever-chat": "^8.0.1",

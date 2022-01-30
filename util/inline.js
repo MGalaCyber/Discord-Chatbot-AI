@@ -30,13 +30,13 @@ class Message extends Structures.get("Message") {
 Structures.extend("Message", () => Message);
 
 /**
-////////////////////////////////////////////////////////////////////
-////                                                            ////
-\\\\                  Bot Coded by GalaXd#9165                  \\\\
-////                                                            ////
-\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
-////                                                            ////
-\\\\                    All Right Reserved!                     \\\\
-////                                                            ////
-////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\                  Bot Coded by GalaXd#9165                   \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
  */

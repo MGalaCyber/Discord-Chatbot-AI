@@ -113,13 +113,13 @@ client.on("message", async message => {
 client.login(process.env.TOKEN)
 
 /**
-////////////////////////////////////////////////////////////////////
-////                                                            ////
-\\\\                  Bot Coded by GalaXd#9165                  \\\\
-////                                                            ////
-\\\\  Work for MGalaCyber Development | https://mgalacyber.xyz  \\\\
-////                                                            ////
-\\\\                    All Right Reserved!                     \\\\
-////                                                            ////
-////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+////                                                             ////
+\\\\                  Bot Coded by GalaXd#9165                   \\\\
+////                                                             ////
+\\\\   Work for MGalaCyber Development | https://galacyber.xyz   \\\\
+////                                                             ////
+\\\\                    All Right Reserved!                      \\\\
+////                                                             ////
+/////////////////////////////////////////////////////////////////////
  */
