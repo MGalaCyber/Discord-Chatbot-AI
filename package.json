@@ -1,6 +1,6 @@
 {
   "name": "chatbot-ai-v1",
-  "version": "2.5.3",
+  "version": "2.6.1",
   "description": "Hey there! Looking to make a chatbot? Here is your right place!",
   "main": "index.js",
   "scripts": {
