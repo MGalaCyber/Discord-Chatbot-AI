@@ -21,7 +21,7 @@ app.listen(port, () => {
 // Code
 const fs = require('fs');
 const Discord = require('discord.js');
-const { author } = require('./package.json');
+const { version, author} = require('./package.json');
 const client = new Discord.Client({
     disableEveryone: true
 });
@@ -34,6 +34,7 @@ client.aliases = new Discord.Collection();
 client.db = require('quick.db');
 owner = process.env.OWNER // Add you Discord ID
 
+// Discord bot status Activity
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
 setInterval(async () => {
@@ -47,6 +48,60 @@ const statuses = [`${process.env.PREFIX}help for Information`,
    client.user.setActivity(statuses[Math.floor(Math.random() * statuses.length)], { type: "STREAMING", url: "https://discord.gg/2UshYsFfCP"})
 }, 10000)
 });
+
+// Event Client New Guild Join
+const newGuildJoin = process.env.NEW_GUILD_JOIN // --> Comming soon
+
+client.on('guildCreate', guild => {
+  const channel = guild.channels.cache.find(ch => ch.name === 'general' && ch.permissionsFor(guild.me).has('SEND_MESSAGES'));
+  const newGuildEmbed = new Discord.MessageEmbed()
+  .setColor('RANDOM')
+  .setTitle(`${guild.name} | ${guild.id}`)
+  .setDescription(`Thanks for adding me to your server!. my default prefix is: \`${process.env.PREFIX}\``)
+  .addField('Show all commands', `\`${process.env.PREFIX}help\``)
+  .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP)`)
+  .setThumbnail(guild.iconURL())
+  .setTimestamp()
+  .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
+  .setFooter(`New Guild Joining | © ${author} - Siesta v${version}`)
+  channel.send(newGuildEmbed);
+  //console.channels.cache.get(newGuildJoin).send(`New Guild Join: ${guild.name} | ${guild.id}`)
+})
+
+// Event Client New Guild Leave
+const newGuildLeave = process.env.NEW_GUILD_LEAVE // --> Comming soon
+
+client.on('guildDelete', guild => {
+  const leaveGuildEmbed = new Discord.MessageEmbed()
+  .setColor('RED')
+  .setTitle(`${guild.name} | ${guild.id}`)
+  .setDescription(`Hey ${guild.owner.user.username}, I have left your server. If you want me back, please invite me again to your server.`)
+  .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP) | [Invite me again](https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=533583101136&redirect_uri=https%3A%2F%2Fsiesta-chan.vercel.app&response_type=code&scope=identify%20email%20guilds%20bot)`)
+  .setThumbnail(guild.iconURL())
+  .setTimestamp()
+  .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
+  .setFooter(`New Guild Leave | © ${author} - Siesta v${version}`)
+  guild.owner.user.send(leaveGuildEmbed)
+  //console.channels.cache.get(newGuildLeave).send(`New Guild Leave: ${guild.name} | ${guild.id}`)
+});
+
+// AntiCrash System
+process.on('unhandledRejection', (err, reason, p) => {
+  console.log('Unhandled Rejection at: Promise:', p, 'reason:', reason);
+  console.log(err, p)
+})
+process.on('uncaughtException', (err, origin) => {
+  console.log('Uncaught Exception:', err, origin);
+  console.log(err, origin)
+})
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+  console.log('Uncaught Exception:', err, origin);
+  console.log(err, origin)
+})
+process.on('multipleResolves', (type, promise, reason) => {
+  console.log('Multiple Resolves:', type, promise, reason);
+  console.log(type, promise, reason)
+})
 
 // Event Handler
 fs.readdir('./events/', (err, files) => { 

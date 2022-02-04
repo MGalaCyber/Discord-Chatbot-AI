@@ -20,6 +20,10 @@
     "PREFIX": {
       "description": "Add you Prefix for Chatbot",
       "required": true
+    },
+    "FeedbackChannel": {
+      "description": "Add you Feedback channel for Chatbot",
+      "required": true
     }
 },
   "buildpacks": [
