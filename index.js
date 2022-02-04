@@ -59,6 +59,7 @@ client.on('guildCreate', guild => {
   .setTitle(`${guild.name} | ${guild.id}`)
   .setDescription(`Thanks for adding me to your server!. my default prefix is: \`${process.env.PREFIX}\``)
   .addField('Show all commands', `\`${process.env.PREFIX}help\``)
+  .addField('Start chatbot', `\`${process.env.PREFIX}setchat #channel-name\``)
   .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP)`)
   .setThumbnail(guild.iconURL())
   .setTimestamp()
