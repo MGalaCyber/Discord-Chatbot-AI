@@ -34,9 +34,36 @@ client.aliases = new Discord.Collection();
 client.db = require('quick.db');
 owner = process.env.OWNER // Add you Discord ID
 
+    // fuction uptime
+    let days = Math.floor(client.uptime / 86400000);
+    let hours = Math.floor(client.uptime / 3600000) % 24;
+    let minutes = Math.floor(client.uptime / 60000) % 60;
+    let seconds = Math.floor(client.uptime / 1000) % 60;
+
 // Discord bot status Activity
 client.on('ready', () => {
   console.log(`${client.user.username} is Online`)
+
+  // Table Status
+  console.table({
+    "Bot Name": client.user.tag,
+    "Bot Owner": owner,
+    "Bot Author": author,
+    "Bot Status": client.user.presence.status,
+    "Bot Version": version,
+    "Discord.js Version": Discord.version,
+    "Node.js Version": process.version,
+    "platform": process.platform,
+    "Bot Prefix": process.env.PREFIX,
+    "Total Commands": client.commands.size,
+    "Total Guilds": client.guilds.cache.size,
+    "Bot Channels": client.channels.cache.size,
+    "Total Users": client.users.cache.size,
+    "Bot Memory Usage": `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
+    "Bot Uptime": `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`,
+    "Bot Ping": `${client.ws.ping}ms`
+
+  });
 setInterval(async () => {
 const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.guilds.cache.size} Servers`,
@@ -59,14 +86,14 @@ client.on('guildCreate', guild => {
   .setTitle(`${guild.name} | ${guild.id}`)
   .setDescription(`Thanks for adding me to your server!. my default prefix is: \`${process.env.PREFIX}\``)
   .addField('Show all commands', `\`${process.env.PREFIX}help\``)
-  .addField('Start chatbot', `\`${process.env.PREFIX}setchat #channel-name\``)
   .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP)`)
   .setThumbnail(guild.iconURL())
   .setTimestamp()
   .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
   .setFooter(`New Guild Joining | © ${author} - Siesta v${version}`)
   channel.send(newGuildEmbed);
-  //console.channels.cache.get(newGuildJoin).send(`New Guild Join: ${guild.name} | ${guild.id}`)
+  console.log(`${chalk.green(`New Guild Join!: ${guild.name} | ${guild.id}`)}`)
+  console.log(`${chalk.green(`Owner Join!: ${guild.owner.user.tag} | ${guild.owner.user.id}`)}`)
 })
 
 // Event Client New Guild Leave
@@ -83,7 +110,8 @@ client.on('guildDelete', guild => {
   .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
   .setFooter(`New Guild Leave | © ${author} - Siesta v${version}`)
   guild.owner.user.send(leaveGuildEmbed)
-  //console.channels.cache.get(newGuildLeave).send(`New Guild Leave: ${guild.name} | ${guild.id}`)
+  console.log(`${chalk.red(`New Guild Leave!: ${guild.name} | ${guild.id}`)}`)
+  console.log(`${chalk.red(`Owner Left!: ${guild.owner.user.username} | ${guild.owner.user.id}`)}`)
 });
 
 // AntiCrash System

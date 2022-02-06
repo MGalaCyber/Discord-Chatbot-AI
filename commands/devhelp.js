@@ -2,28 +2,25 @@ module.exports.run = async(client, message, args) => {
     let db = client.db
     const Discord = require('discord.js');
     const { version, author } = require('../package.json');
-
-    // First
-    const msgembed = new Discord.MessageEmbed()
-    .setDescription('🏓 Pinging...')
-    .setColor('YELLOW');
-    const msg = await message.channel.send(msgembed)
     
-    // Second
-    let embed = new Discord.MessageEmbed()
-    .setTitle(`Returns Latency And API Ping`)
-    .addField('⌛ Websocket Latency', `\`${Math.floor(msg.createdAt - message.createdAt)}ms | ${message.createdTimestamp - message.createdTimestamp}ms\``)
-    .addField('📡 API Latency', `\`${Math.round(client.ws.ping)}ms\``)
-    .setColor("GREEN")
+    const devhelpEmbed = new Discord.MessageEmbed()
+    .setTitle('❓ Help Menu')
+    .setColor('RANDOM')
+    .addField('Show all Dev commands', `\`${process.env.PREFIX}devhelp\``, true)
+    .addField('Send Invite Server', `\`${process.env.PREFIX}getinvite\``, true)
+    .addField('Leave bots from Server', `\`${process.env.PREFIX}leaveserver\``, true)
+	.addField('Send Serverlist bots', `\`${process.env.PREFIX}serverlist\``, true)
+	.addField('Reload the bots', `\`${process.env.PREFIX}reload\``, true)
+    .addField('_ _', `_ _`, true)
+	.setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
     .setFooter(`Requested by: ${message.author.tag} | © ${author} - Siesta v${version}`, message.author.avatarURL())
-    
-    await message.channel.send(embed)
-    msg.delete();
+
+    message.channel.send(devhelpEmbed);
     }
 
     module.exports.config = {
-      name: 'ping',
-      aliases: ['latency']
+      name: 'devhelp',
+      aliases: ['deh']
     }
 
 /**

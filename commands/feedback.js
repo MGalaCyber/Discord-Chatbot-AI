@@ -29,9 +29,9 @@ module.exports.run = async(client, message, args) => {
     .addField('Server Verification Level:', `\`${message.guild.verificationLevel}\``, true)
     .addField('From Channel Name:', `\`${message.channel.name}\``, true)
     .addField('Channel ID:', `\`${message.channel.id}\``, true)
-    .addField('_ _', `_ _`, true)
+    .addField('Channel Topic:', `\`${message.channel.topic}\``, true)
     // Reason Feedback
-    .addField('Feedback:', `${args}`)
+    .addField('Feedback:', `\`${args.join(' ')}\``)
     // Images
     .setThumbnail(message.author.avatarURL())
     .setTimestamp()
