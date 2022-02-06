@@ -104,7 +104,7 @@ client.on('guildDelete', guild => {
   .setColor('RED')
   .setTitle(`${guild.name} | ${guild.id}`)
   .setDescription(`Hey ${guild.owner.user.username}, I have left your server. If you want me back, please invite me again to your server.`)
-  .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP) | [Invite me again](https://discord.com/oauth2/authorize?client_id=${client.user.id}&permissions=533583101136&redirect_uri=https%3A%2F%2Fsiesta-chan.vercel.app&response_type=code&scope=identify%20email%20guilds%20bot)`)
+  .addField('Link from Siesta chan:', `[Website](https://siesta-chan.vercel.app) | [Support Server](https://discord.gg/2UshYsFfCP) | [Invite me again](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=534657367281&redirect_uri=https%3A%2F%2Fsiesta-chan.vercel.app&response_type=code&scope=identify%20email%20guilds%20bot%20guilds.join)`)
   .setThumbnail(guild.iconURL())
   .setTimestamp()
   .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
