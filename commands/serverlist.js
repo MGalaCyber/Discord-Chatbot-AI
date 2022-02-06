@@ -26,7 +26,7 @@ module.exports.run = async(client, message, args) => {
             .join("\n\n");
   
         // Embed send to channel
-        let serverlistEmbed = new Discord.MessageEmbed()
+        let embed = new Discord.MessageEmbed()
           .setAuthor(client.user.tag, client.user.displayAvatarURL({dynamic : true}))
           
           .setColor("00FFFF")
@@ -35,7 +35,7 @@ module.exports.run = async(client, message, args) => {
           .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
           .setFooter(`© ${author} - Siesta v${version}`)
   
-        let msg = await message.channel.send(serverlistEmbed);
+        let msg = await message.channel.send(embed);
   
         await msg.react("⬅");
         await msg.react("➡");
