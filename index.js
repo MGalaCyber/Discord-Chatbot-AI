@@ -11,7 +11,7 @@ require("./util/inline.js");
 
 
 app.get('/', (req, res) => {
-  res.send('Server Online! Bot is ready!!')
+  res.send('Server Online! Bot is ready!! | https://siesta-chan.vercel.app')
 })
 
 app.listen(port, () => {
@@ -42,8 +42,7 @@ owner = process.env.OWNER // Add you Discord ID
 
 // Discord bot status Activity
 client.on('ready', () => {
-  console.log(`${client.user.username} is Online`)
-
+  
   // Table Status
   console.table({
     "Bot Name": client.user.tag,
@@ -57,13 +56,14 @@ client.on('ready', () => {
     "Bot Prefix": process.env.PREFIX,
     "Total Commands": client.commands.size,
     "Total Guilds": client.guilds.cache.size,
-    "Bot Channels": client.channels.cache.size,
     "Total Users": client.users.cache.size,
+    "Total Channels": client.channels.cache.size,
     "Bot Memory Usage": `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
     "Bot Uptime": `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`,
     "Bot Ping": `${client.ws.ping}ms`
-
+    
   });
+  console.log(`${client.user.username} is Online`)
 setInterval(async () => {
 const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.guilds.cache.size} Servers`,

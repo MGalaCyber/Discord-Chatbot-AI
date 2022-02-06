@@ -2,6 +2,9 @@ module.exports.run = async(client, message, args) => {
     let db = client.db
     const Discord = require('discord.js');
     const { version, author } = require('../package.json');
+    const ownerid = process.env.OWNER
+    
+    if (message.author.id !== ownerid) return;
     
     const devhelpEmbed = new Discord.MessageEmbed()
     .setTitle('❓ Help Menu')
