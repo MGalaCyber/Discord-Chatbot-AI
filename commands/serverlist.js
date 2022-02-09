@@ -33,7 +33,7 @@ module.exports.run = async(client, message, args) => {
           .setFooter(`Page - ${page}/${Math.ceil(client.guilds.cache.size / 10)}`)
           .setDescription(description)
           .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
-          .setFooter(`© ${author} - Siesta v${version}`)
+          .setFooter(`Page - ${page}/${Math.ceil(client.guilds.cache.size / 10)}`)
   
         let msg = await message.channel.send(embed);
   

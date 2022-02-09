@@ -12,7 +12,7 @@ module.exports.run = async(client, message, args) => {
     // Second
     let embed = new Discord.MessageEmbed()
     .setTitle(`Returns Latency And API Ping`)
-    .addField('⌛ Websocket Latency', `\`${Math.floor(msg.createdAt - message.createdAt)}ms | ${message.createdTimestamp - message.createdTimestamp}ms\``)
+    .addField('⌛ Websocket Latency', `\`${Math.floor(msg.createdAt - message.createdAt)}ms\``)
     .addField('📡 API Latency', `\`${Math.round(client.ws.ping)}ms\``)
     .setColor("GREEN")
     .setFooter(`Requested by: ${message.author.tag} | © ${author} - Siesta v${version}`, message.author.avatarURL())

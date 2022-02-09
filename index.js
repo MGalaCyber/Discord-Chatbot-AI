@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
     console.log(`${chalk.green(`Server online!`)}`)
+    console.log(`${chalk.yellow(`Server Listening on port: ${port}`)}`)
 })
 
 // Code
@@ -33,12 +34,6 @@ client.aliases = new Discord.Collection();
 
 client.db = require('quick.db');
 owner = process.env.OWNER // Add you Discord ID
-
-    // fuction uptime
-    let days = Math.floor(client.uptime / 86400000);
-    let hours = Math.floor(client.uptime / 3600000) % 24;
-    let minutes = Math.floor(client.uptime / 60000) % 60;
-    let seconds = Math.floor(client.uptime / 1000) % 60;
 
 // Discord bot status Activity
 client.on('ready', () => {
@@ -59,11 +54,10 @@ client.on('ready', () => {
     "Total Users": client.users.cache.size,
     "Total Channels": client.channels.cache.size,
     "Bot Memory Usage": `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
-    "Bot Uptime": `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`,
     "Bot Ping": `${client.ws.ping}ms`
     
   });
-  console.log(`${client.user.username} is Online`)
+  console.log(`${chalk.green(`${client.user.username} is Online`)}`)
 setInterval(async () => {
 const statuses = [`${process.env.PREFIX}help for Information`,
                   `${client.guilds.cache.size} Servers`,
@@ -94,6 +88,14 @@ client.on('guildCreate', guild => {
   channel.send(newGuildEmbed);
   console.log(`${chalk.green(`New Guild Join!: ${guild.name} | ${guild.id}`)}`)
   console.log(`${chalk.green(`Owner Join!: ${guild.owner.user.tag} | ${guild.owner.user.id}`)}`)
+  // console.channels.cache.get(newGuildJoin).send({
+  //   embed: {
+  //     color: 'GREEN',
+  //     title: `New Guild Join!`,
+  //     description: `${guild.name} | ${guild.id}\nOwner: ${guild.owner.user.tag} | ${guild.owner.user.id}`,
+  //     thumbnail: {url: guild.iconURL()}
+  //   }
+  // });
 })
 
 // Event Client New Guild Leave
@@ -112,6 +114,14 @@ client.on('guildDelete', guild => {
   guild.owner.user.send(leaveGuildEmbed)
   console.log(`${chalk.red(`New Guild Leave!: ${guild.name} | ${guild.id}`)}`)
   console.log(`${chalk.red(`Owner Left!: ${guild.owner.user.username} | ${guild.owner.user.id}`)}`)
+  // console.channels.cache.get(newGuildLeave).send({
+  //   embed: {
+  //     color: 'RED',
+  //     title: `New Guild Leave!`,
+  //     description: `${guild.name} | ${guild.id}\nOwner: ${guild.owner.user.tag} | ${guild.owner.user.id}`,
+  //     thumbnail: {url: guild.iconURL()}
+  //   }
+  // });
 });
 
 // AntiCrash System
@@ -175,7 +185,7 @@ fs.readdir("./commands/", (err, files) => {
   }
   jsfile.forEach((f, i) => {
     let pull = require(`./commands/${f}`);
-    console.log(`Loaded - ${f} | ${pull.config.aliases}`)
+    console.log(`${chalk.cyan(`Loaded - ${f} | ${pull.config.aliases}`)}`)
 
     client.commands.set(pull.config.name, pull);
 if (pull.config.aliases) pull.config.aliases.forEach(alias => client.aliases.set(alias, pull.config.name))
