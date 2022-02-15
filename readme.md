@@ -1,6 +1,6 @@
 <div align="center">
   
-  <img src="https://cdn.discordapp.com/attachments/893068961116225567/943053270375608360/FB_IMG_1642503622583.jpg" width="30%"></img> 
+  <img src="https://cdn.discordapp.com/attachments/893068961116225567/943053270375608360/FB_IMG_1642503622583.jpg" width="75%"></img> 
   
   ![GitHub release (latest by date)](https://img.shields.io/github/v/release/MGalaCyber/Discord-Chatbot-AI?style=for-the-badge)
   ![Website](https://img.shields.io/website?down_color=red&down_message=OFFLINE&label=STATUS&style=for-the-badge&up_color=lime&up_message=ONLINE&url=https%3A%2F%2Frailway.app%2Fproject%2Fb32c4b2d-cda3-4d59-9a6f-e7885f6ef575)
