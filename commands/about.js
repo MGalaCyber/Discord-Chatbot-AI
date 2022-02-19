@@ -12,25 +12,34 @@ module.exports.run = async(client, message, args) => {
     const aboutEmbed = new Discord.MessageEmbed()
     .setTitle('About Siesta chan Chatbot')
     .setColor('RANDOM')
-    .setDescription('This is a Discord Chatbot for fun, easy and fast. Support custom channel')
-    // About Applications
-    .addField('Name', `\`${client.user.tag}\``, true)
-    .addField('ID', `\`${client.user.id}\``, true)
-    .addField('Status', `\`${client.user.presence.status}\``, true)
-    .addField('Prefix', `\`${process.env.PREFIX}\``)
-    // Stats Bot
-    .addField('Total Servers', `\`${client.guilds.cache.size}\``, true)
-    .addField('Total Users', `\`${client.users.cache.size}\``, true)
-    .addField('Commands', `\`${client.commands.size}\``, true)
-    // About System
-    .addField('Version', `\`${version}\``, true)
-    .addField('Discord.js', `\`${Discord.version}\``, true)
-    .addField('Node.js', `\`${process.version}\``, true)
-    .addField('Platform', `\`${process.platform}\``, true)
-    .addField('Memory Usage', `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\``, true)
-    .addField("Uptime", `\`${days}d\`-\`${hours}h\`-\`${minutes}m\`-\`${seconds}s\``, true)
+    .setDescription(
+      `_This is a Discord Chatbot for fun, easy and fast. Support custom channel_
+    
+      ***Application Information*** :
+      > Name: \`${client.user.tag}\`
+      > ID: \`${client.user.id}\`
+      > Status: \`${client.user.presence.status}\`
+      > Prefix: \`${process.env.PREFIX}\`
+      
+      ***Created At*** :
+      > \`${client.user.createdAt}\`
+      
+      ***Guild Stats*** :
+      > Total Servers: \`${client.guilds.cache.size}\`
+      > Total Users: \`${client.users.cache.size}\`
+      > Total Commands: \`${client.commands.size}\`
+
+      ***System Information*** :
+      > Version: \`${version}\`
+      > Discord.js: \`${Discord.version}\`
+      > Node.js: \`${process.version}\`
+      > Platform: \`${process.platform}\`
+      > Memory Usage: \`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\`
+      > Uptime: \`${days}d\`-\`${hours}h\`-\`${minutes}m\`-\`${seconds}s\`
+      
+      **Author:** \`${author}\``
+    )
     // About Developer
-    .addField('Authors', `\`${author}\``)
     .addField('Support the Developers', `This bot is completely free and open source. If you like this bot, please support the developers by donating to the bot's [Saweria](https://saweria.co/donate/Galaxy1274) | [Kofi](https://ko-fi.com/MGalaCyber1274) to keep this bot free forever!`)
     .addField('Website', `[Siesta chan](https://siesta-chan-vercel.app) | [GalaCyber](https://galacyber.vercel.app)`)
     .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')

@@ -42,11 +42,14 @@ These are the steps to make YOUR (own!!!) chatbot using Node JS
 
 ## ⚙ Configuration
 - ⚠ Never share your tokens or api keys publicly
-- Modify `.env` and fill out the values:
+- Create and Modify `.env` and fill out the values:
 ```env
 TOKEN="discord-bot-token"
 PREFIX="your-prefix"
 OWNER="discord-user-id"
+NEW_GUILD_JOIN="discord-channel-id-for-joining-guild-notification"
+NEW_GUILD_LEAVE="discord-channel-id-for-leave-guild-notification"
+BugsChannel="discord-channel-id-for-bugsreport"
 FeedbackChannel="discord-channel-id-for-feedback"
 ```
 
@@ -74,7 +77,7 @@ Now, it should show your bot is online!!
 ```
 > Step 1: First, fork this repository, then clone that repository from repl.it.
 > Step 2: Once your repl is ready, check your sidebar and see a lock sign. There, you should put TOKEN="-" as your key, and as value, your bot token.
-> Step 3: Add your Discord ID in OWNER="-", add "PREFIX="-" and add "FeedbackChannel="-"
+> Step 3: Add your Discord ID in OWNER="-", add "PREFIX="-", NEW_GUILD_JOIN="-", NEW_GUILD_LEAVE="-", BugsChannel="-", and add "FeedbackChannel="-"
 > Step 4: Add your bot customisations in chatSend.js, when requiring clever-chat
 > Step 5: Go to your "SHELL" in your right, and copy/paste run this command `npm i axios@0.21.1 chalk@4.1.1 clever-chat@8.0.0 discord.js@12.5.3 dotenv@10.0.0 express@4.17.1 quick.db@7.1.3`
 > Step 6: Go to "index.js" file and click on "RUN" in repl.it.
@@ -93,6 +96,11 @@ You can also chat with the bot in DMs!
 # 💖 Support
 - [Saweria](https://saweria.co/Galaxy1274)
 - [Ko-Fi](https://ko-fi.com/MGalaCyber1274)
+
+### 💠 Voting the bots
+<a href="https://top.gg/bot/869755197046530060">
+  <img src="https://top.gg/api/widget/869755197046530060.svg">
+</a>
 
 ---------
 # 💝 Credit

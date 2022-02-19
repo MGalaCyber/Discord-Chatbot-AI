@@ -70,12 +70,20 @@ const statuses = [`${process.env.PREFIX}help for Information`,
 }, 10000)
 });
 
-// Event Client New Guild Join
-const newGuildJoin = process.env.NEW_GUILD_JOIN // --> Comming soon
+// Mention Prefix
+client.on('message', async message => {
+  const mentionPrefix = new RegExp(`^<@!?${client.user.id}>( |)$`);
+  if (message.content.match(mentionPrefix)) {
+    return message.reply(`My prefix is \`${process.env.PREFIX}\``)
+    .then(msg => msg.delete({ timeout: 6000 }));
+  }
+})
 
+// Event Client New Guild Join
 client.on('guildCreate', guild => {
-  const channel = guild.channels.cache.find(ch => ch.name === 'general' && ch.permissionsFor(guild.me).has('SEND_MESSAGES'));
-  const newGuildEmbed = new Discord.MessageEmbed()
+  //const channel = guild.channels.cache.find(ch => ch.name === 'general' && ch.permissionsFor(guild.me).has('SEND_MESSAGES'));
+  const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'));
+  const newGuildEmbed1 = new Discord.MessageEmbed()
   .setColor('RANDOM')
   .setTitle(`${guild.name} | ${guild.id}`)
   .setDescription(`Thanks for adding me to your server!. my default prefix is: \`${process.env.PREFIX}\``)
@@ -85,24 +93,84 @@ client.on('guildCreate', guild => {
   .setTimestamp()
   .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
   .setFooter(`New Guild Joining | © ${author} - Siesta v${version}`)
-  channel.send(newGuildEmbed);
+  channel.send(newGuildEmbed1);
   console.log(`${chalk.green(`New Guild Join!: ${guild.name} | ${guild.id}`)}`)
   console.log(`${chalk.green(`Owner Join!: ${guild.owner.user.tag} | ${guild.owner.user.id}`)}`)
-  // console.channels.cache.get(newGuildJoin).send({
-  //   embed: {
-  //     color: 'GREEN',
-  //     title: `New Guild Join!`,
-  //     description: `${guild.name} | ${guild.id}\nOwner: ${guild.owner.user.tag} | ${guild.owner.user.id}`,
-  //     thumbnail: {url: guild.iconURL()}
-  //   }
-  // });
 })
 
-// Event Client New Guild Leave
-const newGuildLeave = process.env.NEW_GUILD_LEAVE // --> Comming soon
+const newGuildJoin = process.env.NEW_GUILD_JOIN
+client.on('guildCreate', async guild => {
+  const channel = await client.channels.cache.get(newGuildJoin);
+  const newGuildEmbed2 = new Discord.MessageEmbed()
+  .setColor('#00FF00')
+  .setTitle('📢 INFORMATION | New Guild Join!')
+  .setDescription(
+    `***Guild Information*** :
+    > **Name**: \`${guild.name}\`
+    > **ID**: \`${guild.id}\`
 
+    **Description**:
+    > \`${guild.description}\`
+
+    ***Guild Owner Information*** :
+    > **Owner**: \`${guild.owner.user.tag}\`
+    > **ID**: \`${guild.owner.user.id}\`
+
+    ***Guild OverView*** :
+    **Created At**:
+    > \`${guild.createdAt}\`
+    **Client join At**:
+    > \`${guild.me.joinedAt}\`
+
+    > **Region**: \`${guild.region}\`
+    > **Badges**: \`${guild.premiumSubscriptionCount}\`
+    > **Badge Tier**: \`${guild.premiumTier}\`
+    > **Badge Subscription Count**: \`${guild.premiumSubscriptionCount}\`
+    > **Badge Subscription Ends**: \`${guild.premiumSubscriptionCount}\`
+    > **Features**: \`${guild.features}\`
+    > **Partnered**: ${guild.partnered}
+
+    ***Members Stats*** :
+    > 👥 Total: \`${guild.memberCount}\`
+    > 👤 Human: \`${guild.members.cache.filter(m => !m.user.bot).size}\`
+    > 🤖 Bots: \`${guild.members.cache.filter(m => m.user.bot).size}\`
+
+    ***System Stats*** :
+    > Verification Level: \`${guild.verificationLevel}\`
+    > Explicit Content Filter: \`${guild.explicitContentFilter}\`
+    > MFA: \`${guild.mfaLevel}\`
+    > Roles: \`${guild.roles.cache.size}\`
+    
+    **Emojis Stats**:
+    > 📄 Total: \`${guild.emojis.cache.size}\`
+    > 🖼 UnAnimated: \`${guild.emojis.cache.filter(e => e.animated).size}\`
+    > 🎞 Animated: \`${guild.emojis.cache.filter(e => !e.animated).size}\`
+    
+    **Channels Stats**:
+    > 📄 Total: \`${guild.channels.cache.size}\`
+    > 🧩 Default Channel: ${guild.channels.cache.filter(c => c.type === 'text').first()}
+    > 📚 Categories: \`${guild.channels.cache.filter(c => c.type === 'category').size}\`
+    > 💬 Text: \`${guild.channels.cache.filter(c => c.type === 'text').size}\`
+    > 🔊 Voice: \`${guild.channels.cache.filter(c => c.type === 'voice').size}\`
+    > 📢 News: \`${guild.channels.cache.filter(c => c.type === 'news').size}\`
+    > 🏪 Store: \`${guild.channels.cache.filter(c => c.type === 'store').size}\`
+    > 📨 DMs: \`${guild.channels.cache.filter(c => c.type === 'dm').size}\`
+    > 🔞 NSFW: \`${guild.channels.cache.filter(c => c.type === 'nsfw').size}\`
+
+    **AFK Channel**: \`${guild.afkChannel}\`
+    **AFK Timeout**: \`${guild.afkTimeout}\``
+  )
+  .setThumbnail(guild.iconURL())
+  .setTimestamp()
+  .setFooter(`Total: [ ${client.guilds.cache.size} ] Server | © ${author} - Siesta v${version}`)
+  channel.send(newGuildEmbed2);
+})
+
+//////////////////// LIMIT \\\\\\\\\\\\\\\\\\\\
+
+// Event Client New Guild Leave
 client.on('guildDelete', guild => {
-  const leaveGuildEmbed = new Discord.MessageEmbed()
+  const leaveGuildEmbed1 = new Discord.MessageEmbed()
   .setColor('RED')
   .setTitle(`${guild.name} | ${guild.id}`)
   .setDescription(`Hey ${guild.owner.user.username}, I have left your server. If you want me back, please invite me again to your server.`)
@@ -111,18 +179,80 @@ client.on('guildDelete', guild => {
   .setTimestamp()
   .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
   .setFooter(`New Guild Leave | © ${author} - Siesta v${version}`)
-  guild.owner.user.send(leaveGuildEmbed)
+  guild.owner.user.send(leaveGuildEmbed1)
   console.log(`${chalk.red(`New Guild Leave!: ${guild.name} | ${guild.id}`)}`)
   console.log(`${chalk.red(`Owner Left!: ${guild.owner.user.username} | ${guild.owner.user.id}`)}`)
-  // console.channels.cache.get(newGuildLeave).send({
-  //   embed: {
-  //     color: 'RED',
-  //     title: `New Guild Leave!`,
-  //     description: `${guild.name} | ${guild.id}\nOwner: ${guild.owner.user.tag} | ${guild.owner.user.id}`,
-  //     thumbnail: {url: guild.iconURL()}
-  //   }
-  // });
 });
+
+const newGuildLeave = process.env.NEW_GUILD_LEAVE
+client.on('guildDelete', async guild => {
+  const channel = await client.channels.cache.get(newGuildLeave);
+  const leaveGuildEmbed2 = new Discord.MessageEmbed()
+  .setColor('#FF0000')
+  .setTitle('📢 INFORMATION | New Guild Leave!')
+  .setDescription(
+    `***Guild Information*** :
+    > **Name**: \`${guild.name}\`
+    > **ID**: \`${guild.id}\`
+
+    **Description**:
+    > \`${guild.description}\`
+
+    ***Guild Owner Information*** :
+    > **Owner**: \`${guild.owner.user.tag}\`
+    > **ID**: \`${guild.owner.user.id}\`
+
+    ***Guild OverView*** :
+    **Created At**:
+    > \`${guild.createdAt}\`
+    **Client join At**:
+    > \`${guild.me.joinedAt}\`
+
+    > **Region**: \`${guild.region}\`
+    > **Badges**: \`${guild.premiumSubscriptionCount}\`
+    > **Badge Tier**: \`${guild.premiumTier}\`
+    > **Badge Subscription Count**: \`${guild.premiumSubscriptionCount}\`
+    > **Badge Subscription Ends**: \`${guild.premiumSubscriptionCount}\`
+    > **Features**: \`${guild.features}\`
+    > **Partnered**: ${guild.partnered}
+
+    ***Members Stats*** :
+    > 👥 Total: \`${guild.memberCount}\`
+    > 👤 Human: \`${guild.members.cache.filter(m => !m.user.bot).size}\`
+    > 🤖 Bots: \`${guild.members.cache.filter(m => m.user.bot).size}\`
+
+    ***System Stats*** :
+    > Verification Level: \`${guild.verificationLevel}\`
+    > Explicit Content Filter: \`${guild.explicitContentFilter}\`
+    > MFA: \`${guild.mfaLevel}\`
+    > Roles: \`${guild.roles.cache.size}\`
+    
+    **Emojis Stats**:
+    > 📄 Total: \`${guild.emojis.cache.size}\`
+    > 🖼 UnAnimated: \`${guild.emojis.cache.filter(e => e.animated).size}\`
+    > 🎞 Animated: \`${guild.emojis.cache.filter(e => !e.animated).size}\`
+    
+    **Channels Stats**:
+    > 📄 Total: \`${guild.channels.cache.size}\`
+    > 🧩 Default Channel: ${guild.channels.cache.filter(c => c.type === 'text').first()}
+    > 📚 Categories: \`${guild.channels.cache.filter(c => c.type === 'category').size}\`
+    > 💬 Text: \`${guild.channels.cache.filter(c => c.type === 'text').size}\`
+    > 🔊 Voice: \`${guild.channels.cache.filter(c => c.type === 'voice').size}\`
+    > 📢 News: \`${guild.channels.cache.filter(c => c.type === 'news').size}\`
+    > 🏪 Store: \`${guild.channels.cache.filter(c => c.type === 'store').size}\`
+    > 📨 DMs: \`${guild.channels.cache.filter(c => c.type === 'dm').size}\`
+    > 🔞 NSFW: \`${guild.channels.cache.filter(c => c.type === 'nsfw').size}\`
+
+    **AFK Channel**: \`${guild.afkChannel}\`
+    **AFK Timeout**: \`${guild.afkTimeout}\``
+  )
+  .setThumbnail(guild.iconURL())
+  .setTimestamp()
+  .setFooter(`Total: [ ${client.guilds.cache.size} ] Server | © ${author} - Siesta v${version}`)
+  channel.send(leaveGuildEmbed2);
+})
+
+///////////////////////////////////
 
 // AntiCrash System
 process.on('unhandledRejection', (err, reason, p) => {

@@ -14,6 +14,7 @@ module.exports.run = async(client, message, args) => {
 	.addField('Check Realtime bots', `\`${process.env.PREFIX}uptime\``, true)
 	.addField('About for Siesta', `\`${process.env.PREFIX}about\``, true)
 	.addField('Feedback for Siesta', `\`${process.env.PREFIX}feedback\``, true)
+	.addField('Bugs Report for Siesta', `\`${process.env.PREFIX}bugreport\``, true)
     .addField('Source Code', `\`${process.env.PREFIX}src\``, true)
 	.setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
     .setFooter(`Requested by: ${message.author.tag} | © ${author} - Siesta v${version}`, message.author.avatarURL())

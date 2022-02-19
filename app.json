@@ -24,6 +24,18 @@
     "FeedbackChannel": {
       "description": "Add you Feedback channel for Chatbot",
       "required": true
+    },
+    "NEW_GUILD_JOIN": {
+      "description": "Add you New Guild Joining message channel for Chatbot",
+      "required": true
+    },
+    "NEW_GUILD_LEAVE": {
+      "description": "Add you New Guild Leave message channel for Chatbot",
+      "required": true
+    },
+    "BugsChannel": {
+      "description": "Add you Bugs Report channel for Chatbot",
+      "required": true
     }
 },
   "buildpacks": [

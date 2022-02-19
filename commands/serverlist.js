@@ -5,12 +5,7 @@ module.exports.run = async(client, message, args) => {
     const ownerid = process.env.OWNER
     
     if (message.author.id == ownerid) {
-        // Permission Check
-        if (!message.guild.me.hasPermission("ADMINISTRATOR"))
-          return message.channel
-            .send("'-'")
-            .then(msg => msg.delete({ timeout: 5000 }));
-  
+      
         let i0 = 0;
         let i1 = 10;
         let page = 1;

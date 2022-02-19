@@ -2,13 +2,13 @@ module.exports.run = async(client, message, args) => {
     let db = client.db
     const Discord = require('discord.js');
     const { version, author } = require('../package.json');
-    const FeedbackChannel = process.env.FeedbackChannel;
+    const BugsChannel = process.env.BugsChannel;
 
     // First
-    if(!args[0]) return message.reply("Please add a reason to feedback!").then(msg => msg.delete({ timeout: 6000 }));
+    if(!args[0]) return message.reply("Please add a reason to bugs! '-'").then(msg => msg.delete({ timeout: 6000 }));
 
     // Second
-    message.reply(`📨 | ${message.author.username} Thanks for the feedback!`).then(msg => msg.delete({ timeout: 10000 }));
+    message.reply(`📨 | ${message.author.username} Thanks for the bugs report \:)!`).then(msg => msg.delete({ timeout: 10000 }));
 
 
     const feedbackEmbed = new Discord.MessageEmbed()
@@ -30,19 +30,19 @@ module.exports.run = async(client, message, args) => {
     .addField('From Channel Name:', `\`${message.channel.name}\``, true)
     .addField('Channel ID:', `\`${message.channel.id}\``, true)
     .addField('Channel Topic:', `\`${message.channel.topic}\``, true)
-    // Reason Feedback
-    .addField('Feedback:', `\`${args.join(' ')}\``)
+    // Reason Bugs Report
+    .addField('Bugs Report:', `\`${args.join(' ')}\``)
     // Images
     .setThumbnail(message.author.avatarURL())
     .setTimestamp()
-    .setFooter(`Feedback | © ${author} - Siesta v${version}`, message.guild.iconURL())
+    .setFooter(`Bugs Report | © ${author} - Siesta v${version}`, message.guild.iconURL())
 
-    client.channels.cache.get(FeedbackChannel).send(feedbackEmbed)
+    client.channels.cache.get(BugsChannel).send(feedbackEmbed)
     }
 
     module.exports.config = {
-      name: 'feedback',
-      aliases: ['fdb']
+      name: 'bugsreport',
+      aliases: ['bug', 'bgr', 'bugreport']
     }
 
 /**

@@ -12,7 +12,8 @@ module.exports.run = async(client, message, args) => {
     .setImage('https://cdn.discordapp.com/attachments/891317640763695134/931169337488838676/Siesta-chan.gif')
     .setFooter(`Requested by: ${message.author.tag} | © ${author} - Siesta v${version}`, message.author.avatarURL())
 
-    message.channel.send(sourceEmbed);
+    message.channel.send(sourceEmbed)
+    .then(msg => msg.delete({ timeout: 30000 }));
     }
 
     module.exports.config = {
