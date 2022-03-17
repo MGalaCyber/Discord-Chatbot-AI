@@ -6,7 +6,7 @@ const express = require('express')
 const app = express()
 const port = 8080
 const Chat = require('clever-chat')
-require("./util/inline.js");
+require(`${process.cwd()}/util/inline.js`);
 
 
 
@@ -23,16 +23,36 @@ app.listen(port, () => {
 const fs = require('fs');
 const Discord = require('discord.js');
 const { version, author} = require('./package.json');
+const mongoose = require('mongoose');
 const client = new Discord.Client({
     disableEveryone: true
 });
-client.brain = require('./util/chatSend');
-client.em = require("./util/embed")
+client.brain = require(`${process.cwd()}/util/chatSend`);
+client.em = require(`${process.cwd()}/util/embed`)
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
+// Code for Schema
+const userSchema = require(`${process.cwd()}/models/user-schema`);
+const guildSchema = require(`${process.cwd()}/models/guild-schema`);
 
+// Database MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => console.log(`${chalk.green(`[DATABASE 1]`)} Connected to MongoDB!`)).catch(err => console.log(err));
+
+// MongoDB Schema
+client.ticketTranscript = mongoose.model('transcripts',
+  new mongoose.Schema({
+    Channel: String,
+    Content: Array
+  })
+)
+
+// Database Quick.db
 client.db = require('quick.db');
+console.log('[DATABASE 2] Connected to Quick.db')
 owner = process.env.OWNER // Add you Discord ID
 
 // Discord bot status Activity
@@ -273,10 +293,10 @@ process.on('multipleResolves', (type, promise, reason) => {
 })
 
 // Event Handler
-fs.readdir('./events/', (err, files) => { 
+fs.readdir(`${process.cwd()}/events/`, (err, files) => { 
     if (err) return console.error(err); 
     files.forEach(file => {
-        const eventFunction = require(`./events/${file}`); 
+        const eventFunction = require(`${process.cwd()}/events/${file}`); 
         if (eventFunction.disabled) return;
 
         const event = eventFunction.event || file.split('.')[0]; 
@@ -294,6 +314,53 @@ fs.readdir('./events/', (err, files) => {
 // Command Handler
 client.on("message", async message => {
   if (message.author.bot || message.channel.type === "dm") return;
+
+// ==================== Blacklisted Users with MongoDB =================== \\
+let UserData;
+try {
+    UserData = await userSchema.findOne({
+        userId: message.author.id
+    })
+    if(!UserData) {
+        UserData = await userSchema.create({
+            userId: message.author.id
+        })
+    }
+} catch (error) {
+    console.log(`[ERROR] ${error}`);
+}
+
+const userbanEmbed = new Discord.MessageEmbed()
+    .setColor('#FF0000')
+    .setTitle(`${message.author.tag} You has been banned for using bot!`)
+    .setDescription(`Please contact Developer to get unbanned! [Click here](https://discord.gg/MCgn6hgVyG)`)
+    .setThumbnail(message.author.avatarURL({ format: 'png', dynamic: true, size: 1024 }))
+
+if(UserData.blacklisted == true) return message.reply(userbanEmbed).then(msg => msg.delete({ timeout: 30000 }));
+
+// ==================== Blacklisted Servers with MongoDB =================== \\
+let GuildData;
+try {
+    GuildData = await guildSchema.findOne({
+        guildId: message.guild.id
+    })
+    if(!GuildData) {
+        GuildData = await guildSchema.create({
+            guildId: message.guild.id
+        })
+    }
+} catch (error) {
+    console.log(`[ERROR] ${error}`);
+}
+
+const guildbanEmbed = new Discord.MessageEmbed()
+    .setColor('#FF0000')
+    .setTitle(`This server has been banned for using bot!`)
+    .setDescription(`Please contact Developer to get unbanned! [Click here](https://discord.gg/MCgn6hgVyG)`)
+    .setThumbnail(message.guild.iconURL({ format: 'png', dynamic: true, size: 1024 }))
+
+if(GuildData.blacklisted == true) return message.channel.send(guildbanEmbed).then(msg => msg.delete({ timeout: 30000 }));
+
 // command stuff
   let messageArray = message.content.split(" "),
     cmd = messageArray[0].toLowerCase(),
@@ -306,21 +373,32 @@ client.on("message", async message => {
 
 });
 
+const commandFolders = fs.readdirSync(`${process.cwd()}/commands`);
+for (const folder of commandFolders) {
+    const commandFiles = fs.readdirSync(`${process.cwd()}/commands/${folder}`).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const command = require(`${process.cwd()}/commands/${folder}/${file}`);
+        client.commands.set(command.config.name, command);
+        if (command.config.aliases) command.config.aliases.forEach(alias => client.aliases.set(alias, command.config.name))
+    }
+    console.log(`${chalk.green(`[${commandFiles.length}] in ${folder} was loaded!`)}`)
+}
 
-fs.readdir("./commands/", (err, files) => {
-  if (err) console.log(err);
-  let jsfile = files.filter(R => R.endsWith('.js'));
-  if (jsfile.length <= 0) {
-    return console.log(chalk.red("There are no commands"));
-  }
-  jsfile.forEach((f, i) => {
-    let pull = require(`./commands/${f}`);
-    console.log(`${chalk.cyan(`Loaded - ${f} | ${pull.config.aliases}`)}`)
+// Old code for commands directory handlers \\
+// fs.readdir("./commands/", (err, files) => {
+//   if (err) console.log(err);
+//   let jsfile = files.filter(R => R.endsWith('.js'));
+//   if (jsfile.length <= 0) {
+//     return console.log(chalk.red("There are no commands"));
+//   }
+//   jsfile.forEach((f, i) => {
+//     let pull = require(`./commands/${f}`);
+//     console.log(`${chalk.cyan(`Loaded - ${f} | ${pull.config.aliases}`)}`)
 
-    client.commands.set(pull.config.name, pull);
-if (pull.config.aliases) pull.config.aliases.forEach(alias => client.aliases.set(alias, pull.config.name))
-  });
-});
+//     client.commands.set(pull.config.name, pull);
+// if (pull.config.aliases) pull.config.aliases.forEach(alias => client.aliases.set(alias, pull.config.name))
+//   });
+// });
 
 client.on("message", async message => {
   if (message.channel.type === "dm") {

@@ -6,7 +6,7 @@
     "discord-bot",
     "discord",
     "js-chatbot"],
-  "repository": "https://github.com/MGalaCyber/Chatbot-AI-v1",
+  "repository": "https://github.com/MGalaCyber/Discord-Chatbot-AI",
   "website": "https://galacyber.xyz",
   "env": {
     "TOKEN": {
@@ -19,6 +19,10 @@
     },
     "PREFIX": {
       "description": "Add you Prefix for Chatbot",
+      "required": true
+    },
+    "MONGO_URI": {
+      "description": "Add you Mongoose Database",
       "required": true
     },
     "FeedbackChannel": {

@@ -1,6 +1,6 @@
 {
-  "name": "chatbot-ai-v1",
-  "version": "2.8.5",
+  "name": "discord-chatbot-ai",
+  "version": "4.2.1",
   "description": "Hey there! Looking to make a chatbot? Here is your right place!",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "glob": "^7.2.0",
+    "mongoose": "^6.2.7",
     "quick.db": "^7.1.3"
   }
 }
