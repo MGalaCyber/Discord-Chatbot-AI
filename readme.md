@@ -34,6 +34,7 @@ These are the steps to make YOUR (own!!!) chatbot using Node JS
 - [Dotenv](https://www.npmjs.com/package/dotenv)
 - [Express](https://www.npmjs.com/package/express)
 - [Glob](https://www.npmjs.com/package/glob)
+- [Mongoose](https://www.mongodb.com)
 - [Quick.db](https://www.npmjs.com/package/quick.db)
 
 ### Bots Version:
@@ -47,6 +48,7 @@ These are the steps to make YOUR (own!!!) chatbot using Node JS
 TOKEN="discord-bot-token"
 PREFIX="your-prefix"
 OWNER="discord-user-id"
+MONGO_URI="your-mongoose-databases"
 NEW_GUILD_JOIN="discord-channel-id-for-joining-guild-notification"
 NEW_GUILD_LEAVE="discord-channel-id-for-leave-guild-notification"
 BugsChannel="discord-channel-id-for-bugsreport"
@@ -77,7 +79,7 @@ Now, it should show your bot is online!!
 ```
 > Step 1: First, fork this repository, then clone that repository from repl.it.
 > Step 2: Once your repl is ready, check your sidebar and see a lock sign. There, you should put TOKEN="-" as your key, and as value, your bot token.
-> Step 3: Add your Discord ID in OWNER="-", add "PREFIX="-", NEW_GUILD_JOIN="-", NEW_GUILD_LEAVE="-", BugsChannel="-", and add "FeedbackChannel="-"
+> Step 3: Add your Discord ID in OWNER="-", add "PREFIX="-", NEW_GUILD_JOIN="-", NEW_GUILD_LEAVE="-", BugsChannel="-", and add "FeedbackChannel="-", MONGO_URI="-"
 > Step 4: Add your bot customisations in chatSend.js, when requiring clever-chat
 > Step 5: Go to your "SHELL" in your right, and copy/paste run this command `npm i axios@0.21.1 chalk@4.1.1 clever-chat@8.0.0 discord.js@12.5.3 dotenv@10.0.0 express@4.17.1 quick.db@7.1.3`
 > Step 6: Go to "index.js" file and click on "RUN" in repl.it.
