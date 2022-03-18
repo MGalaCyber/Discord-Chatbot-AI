@@ -31,9 +31,9 @@ module.exports.run = async(client, message, args) => {
 
     const SuccessEmbed = new Discord.MessageEmbed()
     .setColor('#00ff00')
-    .setTitle(`✅ Successfully remove blacklisted ${message.guild.name}`)
+    .setTitle(`✅ Successfully remove blacklisted ${client.guilds.cache.get(id).name}`)
     .setDescription(`\`\`\`js\n${JSON.stringify(data, null, 2)}\`\`\``)
-    .setImage(message.guild.iconURL({ dynamic: true, size: 2048 }))
+    .setImage(`${client.guilds.cache.get(id).iconURL({ dynamic: true })}`)
     .addField('Date:', `<t:${parseInt(client.readyTimestamp / 1000)}:R>`)
     .setFooter(`Status Users: [ ${data.blacklisted} ] | Siesta v${version}`)
 

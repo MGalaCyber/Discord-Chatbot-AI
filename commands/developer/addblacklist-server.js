@@ -7,7 +7,7 @@ module.exports.run = async(client, message, args) => {
 // ======================================== Limit code here ======================================= \\
 
     if (message.author.id !== ownerid) return;
-
+    
     const id = args[0];
     if (!id) return message.reply('Please provide a server id.').then(msg => msg.delete({ timeout: 6000 }));
     if (!client.guilds.cache.has(id)) return message.reply(`I can't find the server with the id \`${id}\``).then(msg => msg.delete({ timeout: 6000 }));
@@ -31,9 +31,9 @@ module.exports.run = async(client, message, args) => {
 
     const SuccessEmbed = new Discord.MessageEmbed()
     .setColor('#00ff00')
-    .setTitle(`✅ Successfully blacklisted ${message.guild.name}`)
+    .setTitle(`✅ Successfully blacklisted ${client.guilds.cache.get(id).name}`)
     .setDescription(`\`\`\`js\n${JSON.stringify(data, null, 2)}\`\`\``)
-    .setImage(message.guild.iconURL({ dynamic: true, size: 2048 }))
+    .setImage(`${client.guilds.cache.get(id).iconURL({ dynamic: true })}`)
     .addField('Date:', `<t:${parseInt(client.readyTimestamp / 1000)}:R>`)
     .setFooter(`Status Users: [ ${data.blacklisted} ] | Siesta v${version}`)
 
